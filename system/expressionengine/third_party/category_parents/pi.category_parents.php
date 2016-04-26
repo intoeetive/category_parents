@@ -46,8 +46,14 @@ class Category_parents {
 	
 	$category = is_numeric($TMPL->fetch_param('category')) ? $TMPL->fetch_param('category') : '0';
     $exclude_self = ($TMPL->fetch_param('exclude_self')=='yes') ? $TMPL->fetch_param('exclude_self') : 'no';
-	if ($category<=0) return;
-  
+	$cat_url_title = $TMPL->fetch_param('cat_url_title') ? $TMPL->fetch_param('cat_url_title') : '';
+	
+	if (!empty($cat_url_title)) {
+	    $q = $DB->query("SELECT cat_id FROM exp_categories WHERE cat_url_title='$cat_url_title'");
+		$category = $q->row('cat_id');
+	}
+	if ($category<=0 || !is_numeric($category)) return;
+	
     $tagdata = $TMPL->tagdata;
     $cond = array();
     
@@ -78,7 +84,14 @@ class Category_parents {
 	
 	$category = is_numeric($TMPL->fetch_param('category')) ? $TMPL->fetch_param('category') : '0';
     $exclude_self = ($TMPL->fetch_param('exclude_self')=='yes') ? $TMPL->fetch_param('exclude_self') : 'no';
-	if ($category<=0) return;
+	$cat_url_title = $TMPL->fetch_param('cat_url_title') ? $TMPL->fetch_param('cat_url_title') : '';
+	
+	if (!empty($cat_url_title)) {
+	    $q = $DB->query("SELECT cat_id FROM exp_categories WHERE cat_url_title='$cat_url_title'");
+		$category = $q->row('cat_id');
+	}
+	if ($category<=0 || !is_numeric($category)) return;
+
   
     $tagdata = $TMPL->tagdata;
     $out = '';
@@ -127,7 +140,14 @@ class Category_parents {
 	
 	$category = is_numeric($TMPL->fetch_param('category')) ? $TMPL->fetch_param('category') : '0';
     $exclude_self = ($TMPL->fetch_param('exclude_self')=='yes') ? $TMPL->fetch_param('exclude_self') : 'no';
-	if ($category<=0) return;
+	$cat_url_title = $TMPL->fetch_param('cat_url_title') ? $TMPL->fetch_param('cat_url_title') : '';
+	
+	if (!empty($cat_url_title)) {
+	    $q = $DB->query("SELECT cat_id FROM exp_categories WHERE cat_url_title='$cat_url_title'");
+		$category = $q->row('cat_id');
+	}
+	if ($category<=0 || !is_numeric($category)) return;
+
   
     $tagdata = $TMPL->tagdata;
     
